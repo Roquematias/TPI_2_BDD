@@ -1,0 +1,25 @@
+=====================================================================
+LOG DE SIMULACRO DE INCIDENTE Y CONSULTA ANONIMIZADA (UNIDAD 5)
+Proyecto: Food Store
+Nivel de enmascaramiento: PII Oculto (Datos sensibles sustituidos por tokens)
+=====================================================================
+
+[EVENTO DE SEGURIDAD - INTENTO DE ACCESO NO AUTORIZADO]
+- Marca temporal: 2026-11-11 11:20:00
+- Usuario simulado: app_web (Rol estándar)
+- Acción ejecutada: SELECT * FROM usuario;
+- Resultado esperado / obtenido: Éxito a nivel técnico en la capa relacional, pero con exposición controlada mediante vistas anonimizadas.
+
+[VERIFICACIÓN DE ANONIMIZACIÓN (tabla usuario_anon)]
+id | nombre       | email                      | rol    | fecha_alta
+---|--------------|----------------------------|--------|------------
+ 1 | Usuario_1    | user_1@anonimizado.local   | CLIENTE| 2026-01-15
+ 2 | Usuario_2    | user_2@anonimizado.local   | CLIENTE| 2026-02-10
+ 3 | Usuario_3    | user_3@anonimizado.local   | SOPORTE| 2026-03-05
+
+[CONTROL DE EQUIVALENCIA ESTADÍSTICA]
+- Consulta original agrupada por rol:
+  CLIENTE: 2 | SOPORTE: 1
+- Consulta anonimizada agrupada por rol:
+  CLIENTE: 2 | SOPORTE: 1
+- Conclusión: Las agregaciones coinciden 100% sin revelar correos ni identidades reales al asistente de IA.

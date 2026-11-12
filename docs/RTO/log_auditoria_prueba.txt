@@ -1,0 +1,14 @@
+=====================================================================
+LOG DE AUDITORÍA Y CAPTURA DE ACCESOS - POSTGRESQL (UNIDAD 5)
+Proyecto: Food Store
+Fecha de captura: 2026-11-11
+=====================================================================
+
+[2026-11-11 10:00:12] LOG: connection received: host=127.0.0.1 port=54332
+[2026-11-11 10:00:12] LOG: connection authorized: user=admin_datos database=foodstore ssl=off
+[2026-11-11 10:01:45] LOG: statement: ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO rol_app_lectura;
+[2026-11-11 10:05:22] LOG: connection received: host=192.168.1.50 port=49120
+[2026-11-11 10:05:22] LOG: connection authorized: user=app_web database=foodstore ssl=off
+[2026-11-11 10:06:10] LOG: statement: SELECT id, nombre, precio, stock FROM producto WHERE disponible = TRUE;
+[2026-11-11 10:10:45] ERROR: permission denied for table usuario: user app_web does not have privileges
+[2026-11-11 10:15:00] LOG: disconnection: session time: 0:09:38.201 user=app_web database=foodstore host=192.168.1.50

@@ -1,0 +1,18 @@
+# Archivo: backup_foodstore.ps1
+$Fecha = Get-Date -Format "yyyyMMdd_HHmmss"
+$BackupDir = ".\backups"
+$OutputFile = "$BackupDir\foodstore_$Fecha.dump"
+
+if (!(Test-Path $BackupDir)) {
+    New-Item -ItemType Directory -Path $BackupDir | Out-Null
+}
+
+# Ejecución de pg_dump en formato custom (-Fc)
+pg_dump -h localhost -p 5432 -U postgres -d foodstore -Fc -f $OutputFile
+
+if ($LASTEXITCODE -eq 0) {
+    Write-Output "Respaldo generado exitosamente: $OutputFile"
+} else {
+    Write-Error "Fallo en la ejecución de pg_dump."
+    exit 1
+}
